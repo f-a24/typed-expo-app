@@ -1,10 +1,9 @@
-import * as React from "react";
-import { AppLoading, Font, Asset } from "expo";
+import * as React from 'react';
+import { AppLoading, Font, Asset } from 'expo';
 
 /* from app */
-import Navigation from "app/src";
-import fonts from "app/src/fonts";
-import images from "app/src/images";
+import fonts from 'app/src/fonts';
+import images from 'app/src/images';
 
 type Props = {
   skipLoadingScreen: boolean;

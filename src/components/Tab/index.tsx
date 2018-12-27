@@ -1,10 +1,10 @@
-import * as React from "react";
-import { View } from "react-native";
-import { TabBarBottom } from "react-navigation";
-import { Ionicons } from "@expo/vector-icons";
+import * as React from 'react';
+import { View } from 'react-native';
+import { TabBarBottom } from 'react-navigation';
+import { Ionicons } from '@expo/vector-icons';
 
 /* from app */
-import styles from "./styles";
+import styles from './styles';
 
 type Color = {
   tintColor: string;

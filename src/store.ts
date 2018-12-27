@@ -4,15 +4,15 @@ import {
   applyMiddleware,
   combineReducers,
   Store
-} from "redux";
-import { createReactNavigationReduxMiddleware } from "react-navigation-redux-helpers";
+} from 'redux';
+import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
 
 /* from app */
-import { getActiveRouteName } from "app/src/navigation/AppNavigator";
-import reducers from "app/src/reducers";
+import { getActiveRouteName } from 'app/src/navigation/AppNavigator';
+import reducers from 'app/src/reducers';
 
 const logger = () => (next: (action: Action) => void) => (action: Action) => {
-  if (__DEV__ && action.type.indexOf("Navigation") === -1) {
+  if (__DEV__ && action.type.indexOf('Navigation') === -1) {
     console.log(action);
   }
   next(action);
@@ -22,8 +22,8 @@ const screenTracking = (store: Store) => (next: (action: Action) => void) => (
   action: Action
 ) => {
   if (
-    action.type.indexOf("Navigation") === -1 ||
-    action.type === "TAKEMODAL_CLOSE"
+    action.type.indexOf('Navigation') === -1 ||
+    action.type === 'TAKEMODAL_CLOSE'
   ) {
     return next(action);
   }
@@ -32,7 +32,7 @@ const screenTracking = (store: Store) => (next: (action: Action) => void) => (
   const nextScreen = getActiveRouteName(store.getState().nav);
 
   store.dispatch({
-    type: "SCREEN_SET",
+    type: 'SCREEN_SET',
     payload: {
       current: currentScreen,
       next: nextScreen
@@ -46,7 +46,7 @@ const screenTracking = (store: Store) => (next: (action: Action) => void) => (
 const store = createStore(
   combineReducers({ ...reducers }),
   applyMiddleware(
-    createReactNavigationReduxMiddleware("root", state => state.nav),
+    createReactNavigationReduxMiddleware('root', state => state.nav),
     logger,
     screenTracking
   )
