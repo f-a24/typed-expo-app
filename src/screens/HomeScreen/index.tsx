@@ -50,8 +50,8 @@ export default class HomeScreen extends React.Component<Props, State> {
   onMorePress = (item: any) => {
     Share.share({
       message: item.fileUrl
-    })
-  }
+    });
+  };
 
   onLinkPress = (url: string, txt: string[]) => {
     const { navigation } = this.props;

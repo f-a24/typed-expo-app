@@ -11,11 +11,11 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   emptyText: {
-    fontSize: 18,
+    fontSize: 18
   },
   loading: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 4,
+    padding: 4
   }
 });

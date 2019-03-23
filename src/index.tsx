@@ -8,7 +8,7 @@ import RootNavigation from 'app/src/navigation/RootNavigation';
 const Navigation = () => (
   <View style={{ flex: 1 }}>
     {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-    <Provider store={true}>
+    <Provider store>
       <AppWithNavigationState />
     </Provider>
   </View>
