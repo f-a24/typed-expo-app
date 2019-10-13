@@ -5,6 +5,7 @@ export default StyleSheet.create({
     aspectRatio: 1,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: '#ababab',
-    borderRadius: 18
+    borderRadius: 18,
+    resizeMode: 'cover'
   }
 });
