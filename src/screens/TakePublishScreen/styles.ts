@@ -6,16 +6,19 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: Constants.manifest.extra!.backgroundColor
   },
-  empty: {
-    justifyContent: 'center',
-    alignItems: 'center'
+  row: {
+    flexDirection: 'row',
+    padding: 8
   },
-  emptyText: {
-    fontSize: 18
+  photo: {
+    width: 100,
+    height: 100
   },
-  loading: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 4
+  textInput: {
+    padding: 8,
+    flex: 1,
+    fontFamily: 'noto-sans-regular',
+    fontSize: 16,
+    maxHeight: 16 * 8
   }
 });

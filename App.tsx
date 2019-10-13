@@ -4,6 +4,7 @@ import { AppLoading, Font, Asset } from 'expo';
 /* from app */
 import fonts from 'app/src/fonts';
 import images from 'app/src/images';
+import Navigation from 'app/src';
 
 type Props = {
   skipLoadingScreen: boolean;

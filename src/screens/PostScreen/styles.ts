@@ -12,10 +12,5 @@ export default StyleSheet.create({
   },
   emptyText: {
     fontSize: 18
-  },
-  loading: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 4
   }
 });
