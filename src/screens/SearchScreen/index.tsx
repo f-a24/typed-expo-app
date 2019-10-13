@@ -1,11 +1,10 @@
 import React from 'react';
-import { View, TouchableHighlight } from 'react-native';
+import { View, TouchableHighlight, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 
 /* from app */
 import FlatList from 'app/src/components/FlatList';
 import Text from 'app/src/components/Text';
-import TextInput from 'app/src/components/TextInput';
 import GA from 'app/src/analytics';
 import I18n from 'app/src/i18n';
 import styles from './styles';
@@ -15,7 +14,7 @@ type Props = {
 };
 
 type State = {
-  keyword: string | null;
+  keyword: string | undefined;
   tags: any[];
   searching: boolean;
 };
@@ -31,7 +30,7 @@ export default class SearchScreen extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      keyword: null,
+      keyword: undefined,
       tags: [],
       searching: false
     };
