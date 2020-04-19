@@ -1,56 +1,32 @@
-import React from 'react';
-import { FlatList as RNFlatList } from 'react-native';
+import React, { FC, useState } from 'react';
+import { FlatList as RNFlatList, ViewToken } from 'react-native';
 
-type Props = {
+const FlatList: FC<{
   extraData: {};
-  renderItem: (param?: any) => {};
-  [props: string]: any;
-};
-
-type State = {
-  viewableItemIndices: any[];
-};
-
-export default class FlatList extends React.Component<Props, State> {
-  static defaultProps = {
-    extraData: {},
-    renderItem: () => {}
-  };
-
-  viewabilityConfig = {
-    minimumViewTime: 1,
-    viewAreaCoveragePercentThreshold: 0
-  };
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      viewableItemIndices: []
-    };
-  }
-
-  onViewableItemsChanged = ({ viewableItems }: { viewableItems: any[] }) => {
+  renderItem: (param?: any) => JSX.Element;
+  data: any;
+}> = props => {
+  const { renderItem, extraData } = props;
+  const [viewableItemIndices, setViewableItemIndices] = useState<ViewToken[]>([]);
+  const onViewableItemsChanged = ({ viewableItems }: { viewableItems: ViewToken[] }) => {
     if (viewableItems.length) {
-      this.setState({
-        viewableItemIndices: viewableItems.map(item => item.index)
-      });
+      setViewableItemIndices(viewableItems);
     }
   };
 
-  render() {
-    const { viewableItemIndices } = this.state;
-    const { renderItem, extraData } = this.props;
+  return (
+    <RNFlatList
+      {...props}
+      data={props.data}
+      renderItem={item => renderItem({ ...item, viewableItemIndices })}
+      extraData={Object.assign({}, extraData, viewableItemIndices)}
+      viewabilityConfig={{
+        minimumViewTime: 1,
+        viewAreaCoveragePercentThreshold: 0
+      }}
+      onViewableItemsChanged={onViewableItemsChanged}
+    />
+  );
+};
 
-    return (
-      <RNFlatList
-        {...this.props}
-        data={this.props.data}
-        renderItem={props => renderItem({ ...props, viewableItemIndices })}
-        extraData={Object.assign({}, extraData, viewableItemIndices)}
-        viewabilityConfig={this.viewabilityConfig}
-        onViewableItemsChanged={this.onViewableItemsChanged}
-      />
-    );
-  }
-}
+export default FlatList;

@@ -1,9 +1,10 @@
-import * as React from 'react';
-import { AppLoading, Font, Asset } from 'expo';
+import React from 'react';
+import { AppLoading } from 'expo';
+import { Asset } from 'expo-asset';
+import { loadAsync } from 'expo-font';
 
 /* from app */
 import fonts from 'app/src/fonts';
-import images from 'app/src/images';
 import Navigation from 'app/src';
 
 type Props = {
@@ -27,10 +28,10 @@ export default class App extends React.Component<Props, State> {
 
   loadResourcesAsync = async () => {
     /* asset */
-    await Asset.loadAsync(Object.keys(images).map(key => images[key]));
+    await Asset.loadAsync(require('app/assets/images/icon.png'));
 
     /* font */
-    Font.loadAsync(fonts);
+    loadAsync(fonts);
   };
 
   render() {

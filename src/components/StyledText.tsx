@@ -1,17 +1,10 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import { Text, TextStyle, ViewStyle, ImageStyle } from 'react-native';
 
-interface Props {
-  style: TextStyle | ViewStyle | ImageStyle;
-}
+const StyledText: FC<{style: TextStyle | ViewStyle | ImageStyle}> = props =>
+<Text
+{...props}
+style={[props.style, { fontFamily: 'space-mono' }]}
+/>;
 
-export class MonoText extends React.Component<Props> {
-  render() {
-    return (
-      <Text
-        {...this.props}
-        style={[this.props.style, { fontFamily: 'space-mono' }]}
-      />
-    );
-  }
-}
+export default StyledText;

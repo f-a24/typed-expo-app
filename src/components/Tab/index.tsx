@@ -1,38 +1,35 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import { View } from 'react-native';
-import { TabBarBottom } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 
 /* from app */
 import styles from './styles';
 
 type Color = {
-  tintColor: string;
+  color: string;
 };
 
-export const HomeTabIcon = ({ tintColor }: Color) => (
-  <Ionicons name="md-home" size={26} style={styles.icon} color={tintColor} />
+export const HomeTabIcon: FC<Color> = ({ color }) => (
+  <Ionicons name="md-home" size={26} style={styles.icon} color={color} />
 );
-export const SearchTabIcon = ({ tintColor }: Color) => (
-  <Ionicons name="md-search" size={26} style={styles.icon} color={tintColor} />
+export const SearchTabIcon : FC<Color> = ({ color }) => (
+  <Ionicons name="md-search" size={26} style={styles.icon} color={color} />
 );
-export const NotificationTabIcon = ({ tintColor }: Color) => (
-  <Ionicons name="md-heart" size={26} style={styles.icon} color={tintColor} />
+export const NotificationTabIcon: FC<Color> = ({ color }) => (
+  <Ionicons name="md-heart" size={26} style={styles.icon} color={color} />
 );
-export const MeTabIcon = ({ tintColor }: Color) => (
-  <Ionicons name="md-person" size={26} style={styles.icon} color={tintColor} />
+export const MeTabIcon: FC<Color> = ({ color }) => (
+  <Ionicons name="md-person" size={26} style={styles.icon} color={color} />
 );
-export const TakeTabIcon = ({ tintColor }: Color) => (
+export const TakeTabIcon: FC<Color> = ({ color }) => (
   <View style={styles.takeTab}>
-    <View style={[styles.takeTabRounded, { borderColor: tintColor }]}>
+    <View style={[styles.takeTabRounded, { borderColor: color }]}>
       <Ionicons
         name="md-add"
         size={18}
         style={styles.takeTabIcon}
-        color={tintColor}
+        color={color}
       />
     </View>
   </View>
 );
-
-export const TabBar = TabBarBottom;

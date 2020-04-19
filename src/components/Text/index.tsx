@@ -1,20 +1,17 @@
-import React from 'react';
-import { Text as RNText } from 'react-native';
-import { Constants } from 'expo';
+import React, { FC } from 'react';
+import { Text as RNText, TextStyle } from 'react-native';
+import Constants from 'expo-constants';
 
-export default class Text extends React.Component {
-  static defaultProps = {
-    font: 'noto-sans-regular'
+const Text: FC<{
+  font?: string,
+  style?: TextStyle
+}> = props => {
+  const { font, style } = props;
+  const textStyle = {
+    fontFamily: font || 'noto-sans-regular',
+    color: Constants.manifest.extra.textColor
   };
+  return <RNText {...props} style={[textStyle, style]} />
+};
 
-  render() {
-    const { font, style } = this.props;
-
-    const textStyle = {
-      fontFamily: font,
-      color: Constants.manifest.extra!.textColor
-    };
-
-    return <RNText {...this.props} style={[textStyle, style]} />;
-  }
-}
+export default Text;

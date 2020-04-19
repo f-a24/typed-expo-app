@@ -1,18 +1,16 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { FC } from 'react';
+import { View, ImageStyle } from 'react-native';
 import { Image } from 'react-native-expo-image-cache';
 import styles from './styles';
 
-export default ({
+const Avatar: FC<{
+  uri?: string;
+  style?: ImageStyle,
+  size?: number;
+}> = ({
   uri,
   style,
   size = 36
-}: {
-  uri?: string;
-  style?: {
-    marginVertical: number;
-  };
-  size?: number;
 }) => {
   const avatarStyle = [
     styles.image,
@@ -25,8 +23,8 @@ export default ({
     style
   ];
 
-  if (!uri) {
-    return <View style={avatarStyle} />;
-  }
-  return <Image uri={uri} style={avatarStyle} />;
+    return !uri ? <View style={avatarStyle} /> : <Image uri={uri} style={avatarStyle} />;
 };
+
+
+export default Avatar;

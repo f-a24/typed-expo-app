@@ -1,18 +1,17 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import { Ionicons } from '@expo/vector-icons';
-
 import Colors from 'app/constants/Colors';
 
-interface Props {
+const TabBarIcon: FC<{
   name: string;
-  focused: boolean;
-}
-
-export default (props: Props) => (
+  focused: boolean;  
+}> = ({ name, focused}) => (
   <Ionicons
-    name={props.name}
+    name={name}
     size={26}
     style={{ marginBottom: -3 }}
-    color={props.focused ? Colors.tabIconSelected : Colors.tabIconDefault}
-  />
+    color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+  />  
 );
+
+export default TabBarIcon;

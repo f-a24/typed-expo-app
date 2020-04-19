@@ -46,7 +46,7 @@ const screenTracking = (store: Store) => (next: (action: Action) => void) => (
 const store = createStore(
   combineReducers({ ...reducers }),
   applyMiddleware(
-    createReactNavigationReduxMiddleware('root', state => state.nav),
+    createReactNavigationReduxMiddleware(state => state.nav, 'root'),
     logger,
     screenTracking
   )
